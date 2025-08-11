@@ -1,0 +1,18 @@
+spring:
+  application:
+    name:spring-ai-chat
+
+  ai:
+    openai:
+      # ds 提供的 API 密钥
+      api-key: sk-d0772cb5fef14e49a99c37e29db642c7
+      #ds 开放平台地址
+      base-url: https://api.deepseek.com
+      chat:
+        options:
+          # 模型名称。deepseek-chat 使用的是 V3 模型，deepseek-reasoner 使用的是 R1 模型
+          model: deepseek-chat
+          # 多样化系数。常用值在0.1-1.0之间，值越大回答越多样化，推荐设置0.7。
+          temperature: 0.7
+          # 限制 Token 的用量
+          # max-tokens: 500
