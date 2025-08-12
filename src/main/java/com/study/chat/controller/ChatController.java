@@ -1,14 +1,12 @@
 package com.study.chat.controller;
 
 import jakarta.annotation.Resource;
-import java.util.List;
+import java.util.Map;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.messages.AssistantMessage;
-import org.springframework.ai.chat.messages.Message;
-import org.springframework.ai.chat.messages.SystemMessage;
-import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.Prompt;
+import org.springframework.ai.chat.prompt.PromptTemplate;
+import org.springframework.ai.template.st.StTemplateRenderer;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
@@ -29,15 +27,15 @@ public class ChatController {
     private ChatClient chatClient;
 
     @GetMapping("/ai/chat/deepseek")
-    public String deepSeek(String question) {
-        // 1. 系统角色的消息
-        Message systemMessage = new SystemMessage("你是营销总监");
-        // 2. 用户角色的消息
-        Message userMessage = new UserMessage(question);
-        // 3. 助手角色消息
-        Message assistantMessage = new AssistantMessage("要求价格价格前必须加￥");
-        // 4. 组合 Prompt
-        Prompt prompt = new Prompt(List.of(systemMessage, userMessage, assistantMessage));
+    public String deepSeek(String year, String platform) {
+        // 1. 原始模板
+        String template = "推荐<year>年<platform>最火的音乐前3名";
+        PromptTemplate promptTemplate = PromptTemplate.builder().renderer(
+                StTemplateRenderer.builder().startDelimiterToken('<').endDelimiterToken('>').build())
+            .template(template)
+            .build();
+        // 2. 定义变量值 +  3. 生成 prompt 对象
+        Prompt prompt = promptTemplate.create(Map.of("year", year, "platform", platform));
         return chatClient
             .prompt(prompt)     // 提示词
             .call()             // 发送请求并获取模型生成的响应
