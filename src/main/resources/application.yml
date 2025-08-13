@@ -1,6 +1,12 @@
 spring:
   application:
     name:spring-ai-chat
+  # 数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://111.231.63.169:3306/spring_ai_chat?autoReconnect=true&serverTimezone=UTC%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: jQ^kd9I28MfWM9p#
 
   ai:
     openai:
@@ -16,3 +22,14 @@ spring:
           temperature: 0.7
           # 限制 Token 的用量
           # max-tokens: 500
+    chat:
+      memory:
+        repository:
+          jdbc:
+            schema: classpath:/schema/mysql.sql  # 建表的 SQL 脚本
+            # 是否初始化表结构，可选值包括：
+              # 1. embedded - 仅针对嵌入式数据库自动创建表。默认值
+              # 2. always - 任意数据库都强制建表。首次执行推荐
+              # 3. never - 禁用自动建表。首次执行后推荐
+            initialize-schema: always
+

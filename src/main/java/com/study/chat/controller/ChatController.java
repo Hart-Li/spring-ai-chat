@@ -1,7 +1,6 @@
 package com.study.chat.controller;
 
 import jakarta.annotation.Resource;
-import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.ai.chat.client.ChatClient;
@@ -34,15 +33,16 @@ public class ChatController {
     private ChatMemory chatMemory;
 
     @GetMapping("/ai/chat/deepseek")
-    public String deepSeek(String question, HttpSession session) {
+    public String deepSeek(String question, String conversationId) {
         // 1. 生成会话ID（使用session id 确保用户隔离）
-        String conversationId = session.getId();
+        // String conversationId = session.getId();
         System.out.println("conversationId: " + conversationId);
         // 2. 初始化系统消息
         Message systemMessage = new SystemMessage("你是一名Java架构师，擅长精准而简洁的回答问题");
         if (chatMemory.get(conversationId).isEmpty()) {
             chatMemory.add(conversationId, systemMessage);  // 添加至对话记忆
         }
+
         // 3. 手动获取历史消息
         List<Message> historyMessages = chatMemory.get(conversationId);
         System.out.println("historyMessages: " + historyMessages);
