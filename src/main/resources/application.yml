@@ -8,6 +8,12 @@ spring:
     username: root
     password: jQ^kd9I28MfWM9p#
 
+  # Redis 配置
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
   ai:
     openai:
       # ds 提供的 API 密钥

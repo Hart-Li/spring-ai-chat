@@ -59,6 +59,12 @@
             <artifactId>mysql-connector-j</artifactId>
             <version>9.1.0</version>
         </dependency>
+        <!-- 整合 Redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>3.5.4</version>
+        </dependency>
     </dependencies>
 
     <build>
