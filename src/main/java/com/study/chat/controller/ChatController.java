@@ -1,5 +1,6 @@
 package com.study.chat.controller;
 
+import io.micrometer.common.util.StringUtils;
 import jakarta.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +8,6 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.ai.chat.messages.Message;
-import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.Prompt;
@@ -36,12 +36,15 @@ public class ChatController {
     public String deepSeek(String question, String conversationId) {
         // 1. 生成会话ID（使用session id 确保用户隔离）
         // String conversationId = session.getId();
-        System.out.println("conversationId: " + conversationId);
+        if (StringUtils.isEmpty(question) || StringUtils.isEmpty(conversationId)) {
+            return "error";
+        }
+        conversationId = "chat_memory:" + conversationId;
         // 2. 初始化系统消息
-        Message systemMessage = new SystemMessage("你是一名Java架构师，擅长精准而简洁的回答问题");
+        /*Message systemMessage = new SystemMessage("你是一名Java架构师，擅长精准而简洁的回答问题");
         if (chatMemory.get(conversationId).isEmpty()) {
             chatMemory.add(conversationId, systemMessage);  // 添加至对话记忆
-        }
+        }*/
 
         // 3. 手动获取历史消息
         List<Message> historyMessages = chatMemory.get(conversationId);
