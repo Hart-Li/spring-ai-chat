@@ -71,4 +71,16 @@ public class SerializableMessage implements Serializable {
         this.metadata = metadata;
     }
 
+    public MessageType getMessageType() {
+        return messageType;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public Map<String, Object> getMetadata() {
+        return metadata;
+    }
+
 }

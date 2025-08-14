@@ -23,6 +23,7 @@ public class RedisConfig {
     public RedisTemplate<String, SerializableMessage> redisTemplate(
         RedisConnectionFactory redisConnectionFactory) {
         RedisTemplate<String, SerializableMessage> template = new RedisTemplate<>();
+        template.setConnectionFactory(redisConnectionFactory);
 
         // 2. 配置支持多态的 Jackson 映射器
         ObjectMapper objectMapper = new ObjectMapper();         // Jackson 映射器
@@ -33,6 +34,7 @@ public class RedisConfig {
         );
         // 3. 创建自定义的序列化工具
         GenericJackson2JsonRedisSerializer serializer = new GenericJackson2JsonRedisSerializer(objectMapper);
+        template.setValueSerializer(serializer);
 
         // 4. Key 使用 String 序列化：Value 使用自定义的序列化工具
         template.setKeySerializer(new StringRedisSerializer());

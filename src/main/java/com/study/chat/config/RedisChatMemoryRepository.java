@@ -36,6 +36,9 @@ public class RedisChatMemoryRepository implements ChatMemoryRepository {
 
     @Override
     public void saveAll(String conversationId, List<Message> messages) {
+        // 删除指定会话ID的历史会话
+        redisTemplate.delete(conversationId);
+
         // 数据转换
         List<SerializableMessage> serializableMessages = messages.stream()
             .map(SerializableMessage::new)

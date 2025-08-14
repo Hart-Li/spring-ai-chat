@@ -1,6 +1,8 @@
 package com.study.chat.config;
 
+import jakarta.annotation.Resource;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.context.annotation.Bean;
@@ -15,9 +17,17 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SpringAIConfig {
 
+    @Resource
+    private RedisChatMemoryRepository redisChatMemoryRepository;
+
     @Bean
     public ChatClient openAiChatClient(ChatClient.Builder builder) {
-        return builder.build();
+        return builder.defaultAdvisors(MessageChatMemoryAdvisor
+                .builder(chatMemory(redisChatMemoryRepository))
+                .build())
+            .defaultSystem(
+                system -> system.text("你是一名{role}，擅长精准而简洁得回答问题")
+                    .param("role", "Java架构师")).build();
     }
 
     // 创建特定的 ChatMemory实例
