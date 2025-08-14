@@ -82,6 +82,15 @@ public class ChatController {
             .content();
     }
 
+    @GetMapping("/ai/chat/deepseek/safe")
+    public String deepSeekChatSafe(String question) {
+        // 1.请求模型并提取文本响应内容
+        return chatClient.prompt()
+            .user(question)
+            .call()
+            .content();
+    }
+
     @GetMapping(value = "/ai/chat/stream/deepseek", produces = "text/html;charset=UTF-8")
     public Flux<String> deepSeekStream(String question) {
         return chatModel.stream(question);

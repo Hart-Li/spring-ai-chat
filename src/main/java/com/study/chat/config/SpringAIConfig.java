@@ -1,8 +1,10 @@
 package com.study.chat.config;
 
 import jakarta.annotation.Resource;
+import java.util.Arrays;
+import java.util.List;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.client.advisor.PromptChatMemoryAdvisor;
+import org.springframework.ai.chat.client.advisor.SafeGuardAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.context.annotation.Bean;
@@ -22,10 +24,17 @@ public class SpringAIConfig {
 
     @Bean
     public ChatClient openAiChatClient(ChatClient.Builder builder) {
+        // 敏感词
+        List<String> sensitiveWords = Arrays.asList("色情", "暴力", "有颜色的");
+        // 响应信息
+        String failureResponse = "无法回答此问题，请编辑后重试~";
+        SafeGuardAdvisor safeGuardAdvisor = SafeGuardAdvisor.builder()
+            .sensitiveWords(sensitiveWords)
+            .failureResponse(failureResponse)
+            .order(0)
+            .build();
         return builder
-            .defaultAdvisors(PromptChatMemoryAdvisor
-                .builder(chatMemory(redisChatMemoryRepository))
-                .build())
+            .defaultAdvisors(safeGuardAdvisor)
             .defaultSystem(
                 system -> system.text("你是一名{role}，擅长精准而简洁得回答问题")
                     .param("role", "订购助手")).build();
