@@ -14,7 +14,7 @@
 
 回顾 **`基于内存的多轮会话`** 的实现流程：
 
-![基于内存的多轮会话流程图](images/7/chat-memory-base-flow-chart.png)
+![基于内存的多轮会话流程图](images/8/chat-memory-base-flow-chart.png)
 
 > 核心业务在于发送请求、模型响应，聊天记忆的管理属于业务增强。
 
@@ -100,8 +100,8 @@ public final class MessageChatMemoryAdvisor implements BaseChatMemoryAdvisor {
 
 测试路由：
 
-1. http://localhost:8080/ai/chat/deepseek?question=我是HartLi，是一名Java架构师，知识分享者，请记住我，以便我们后面的对话&conversationId=1
-2. http://localhost:8080/ai/chat/deepseek?question=我是谁&conversationId=1
+1. http://localhost:8080/ai/chat/deepseek/advisor?question=我是HartLi，是一名Java架构师，知识分享者，请记住我，以便我们后面的对话&conversationId=1
+2. http://localhost:8080/ai/chat/deepseek/advisor?question=我是谁&conversationId=1
 
 测试结果(基于上一节Redis存储的ChatMemory)：
 ```
@@ -153,8 +153,8 @@ public String deepSeekChatAdvisor(String question, String conversationId) {
 
 测试路由：
 
-1. http://localhost:8080/ai/chat/deepseek?question=我是HartLi，是一名Java架构师，知识分享者，请记住我，以便我们后面的对话&conversationId=2
-2. http://localhost:8080/ai/chat/deepseek?question=我是谁&conversationId=2
+1. http://localhost:8080/ai/chat/deepseek/advisor?question=我是HartLi，是一名Java架构师，知识分享者，请记住我，以便我们后面的对话&conversationId=2
+2. http://localhost:8080/ai/chat/deepseek/advisor?question=我是谁&conversationId=2
 
 测试结果(基于上一节Redis存储的ChatMemory)：
 ```

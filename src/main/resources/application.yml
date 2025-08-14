@@ -39,3 +39,6 @@ spring:
               # 3. never - 禁用自动建表。首次执行后推荐
             initialize-schema: always
 
+logging:
+  level:
+    org.springframework: debug
