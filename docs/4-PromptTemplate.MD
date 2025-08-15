@@ -18,43 +18,43 @@
 ![PromptTemplate 处理流程](images/4/prompt-template-handle.png)
 
 ```java
-    @GetMapping("/ai/chat/deepseek")
-    public String deepSeek(String year, String platform) {
-        // 1. 原始模板
-        String template = "推荐{year}年{platform}最火的音乐前3名";
-        PromptTemplate promptTemplate = new PromptTemplate(template);
-        // 2. 定义变量值
-        promptTemplate.add("year", year);
-        promptTemplate.add("platform", platform);
-        // 3. 生成 prompt 对象
-        Prompt prompt = promptTemplate.create();
-        return chatClient
-            .prompt(prompt)     // 提示词
-            .call()             // 发送请求并获取模型生成的响应
-            .content();         // 从响应中提取文本内容
-    }
+@GetMapping("/ai/chat/deepseek")
+public String deepSeek(String year, String platform) {
+    // 1. 原始模板
+    String template = "推荐{year}年{platform}最火的音乐前3名";
+    PromptTemplate promptTemplate = new PromptTemplate(template);
+    // 2. 定义变量值
+    promptTemplate.add("year", year);
+    promptTemplate.add("platform", platform);
+    // 3. 生成 prompt 对象
+    Prompt prompt = promptTemplate.create();
+    return chatClient
+        .prompt(prompt)     // 提示词
+        .call()             // 发送请求并获取模型生成的响应
+        .content();         // 从响应中提取文本内容
+}
 ```
 
 简化版使用
 
 ```java
-    @GetMapping("/ai/chat/deepseek")
-    public String deepSeek(String year, String platform) {
-        // 1. 原始模板
-        String template = "推荐{year}年{platform}最火的音乐前3名";
-        PromptTemplate promptTemplate = PromptTemplate.builder().template(template).build();
-        // 2. 定义变量值 +  3. 生成 prompt 对象
-        Prompt prompt = promptTemplate.create(Map.of("year", year, "platform", platform));
-        /*// 2. 定义变量值
-        promptTemplate.add("year", year);
-        promptTemplate.add("platform", platform);
-        // 3. 生成 prompt 对象
-        Prompt prompt = promptTemplate.create();*/
-        return chatClient
-            .prompt(prompt)     // 提示词
-            .call()             // 发送请求并获取模型生成的响应
-            .content();         // 从响应中提取文本内容
-    }
+@GetMapping("/ai/chat/deepseek")
+public String deepSeek(String year, String platform) {
+    // 1. 原始模板
+    String template = "推荐{year}年{platform}最火的音乐前3名";
+    PromptTemplate promptTemplate = PromptTemplate.builder().template(template).build();
+    // 2. 定义变量值 +  3. 生成 prompt 对象
+    Prompt prompt = promptTemplate.create(Map.of("year", year, "platform", platform));
+    /*// 2. 定义变量值
+    promptTemplate.add("year", year);
+    promptTemplate.add("platform", platform);
+    // 3. 生成 prompt 对象
+    Prompt prompt = promptTemplate.create();*/
+    return chatClient
+        .prompt(prompt)     // 提示词
+        .call()             // 发送请求并获取模型生成的响应
+        .content();         // 从响应中提取文本内容
+}
 ```
 
 测试路由：http://localhost:8080/ai/chat/deepseek?year=2024&platform=抖音
@@ -94,7 +94,7 @@
 
 使用 `PromptTemplate` 可构建不同角色的消息，有助于模型分析上下文，明确角色之间交互的意图。
 
-```java
+```
 父类：PromptTemplate
 子类：
     |- SystemPromptTemplate     // 系统角色提示模板
@@ -103,22 +103,22 @@
 ```
 
 ```java
-    @GetMapping("/ai/chat/deepseek")
-    public String deepSeek(String topic) {
-        // 1. 系统角色消息
-        String systemText = "你是一名{role}，擅长精准而简洁得回答问题";
-        PromptTemplate systemPromptTemplate = new SystemPromptTemplate(systemText);
-        String role = "Java架构师";
-        Message systemMessage = systemPromptTemplate.createMessage(Map.of("role", role));
-        // 2. 用户角色消息
-        Message userMessage = new UserMessage(topic);
-        // 3. 组装 Prompt
-        Prompt prompt = new Prompt(List.of(systemMessage, userMessage));
-        return chatClient
-            .prompt(prompt)     // 提示词
-            .call()             // 发送请求并获取模型生成的响应
-            .content();         // 从响应中提取文本内容
-    }
+@GetMapping("/ai/chat/deepseek")
+public String deepSeek(String topic) {
+    // 1. 系统角色消息
+    String systemText = "你是一名{role}，擅长精准而简洁得回答问题";
+    PromptTemplate systemPromptTemplate = new SystemPromptTemplate(systemText);
+    String role = "Java架构师";
+    Message systemMessage = systemPromptTemplate.createMessage(Map.of("role", role));
+    // 2. 用户角色消息
+    Message userMessage = new UserMessage(topic);
+    // 3. 组装 Prompt
+    Prompt prompt = new Prompt(List.of(systemMessage, userMessage));
+    return chatClient
+        .prompt(prompt)     // 提示词
+        .call()             // 发送请求并获取模型生成的响应
+        .content();         // 从响应中提取文本内容
+}
 ```
 
 测试路由：http://localhost:8080/ai/chat/deepseek?topic=SpringAI是什么
@@ -157,23 +157,23 @@
 ![外部资源](images/4/prompt-template-resource-data.png)
 
 ```java
-    @GetMapping("/ai/chat/deepseek")
-    public String deepSeek(String topic) {
-        // 1. 系统角色消息
-//        String systemText = "你是一名{role}，擅长精准而简洁得回答问题";
-//        PromptTemplate systemPromptTemplate = new SystemPromptTemplate(systemText);
-        PromptTemplate systemPromptTemplate = new SystemPromptTemplate(systemMessageResource);
-        String role = "Java架构师";
-        Message systemMessage = systemPromptTemplate.createMessage(Map.of("role", role));
-        // 2. 用户角色消息
-        Message userMessage = new UserMessage(topic);
-        // 3. 组装 Prompt
-        Prompt prompt = new Prompt(List.of(systemMessage, userMessage));
-        return chatClient
-            .prompt(prompt)     // 提示词
-            .call()             // 发送请求并获取模型生成的响应
-            .content();         // 从响应中提取文本内容
-    }
+@GetMapping("/ai/chat/deepseek")
+public String deepSeek(String topic) {
+    // 1. 系统角色消息
+    /*String systemText = "你是一名{role}，擅长精准而简洁得回答问题";
+    PromptTemplate systemPromptTemplate = new SystemPromptTemplate(systemText);*/
+    PromptTemplate systemPromptTemplate = new SystemPromptTemplate(systemMessageResource);
+    String role = "Java架构师";
+    Message systemMessage = systemPromptTemplate.createMessage(Map.of("role", role));
+    // 2. 用户角色消息
+    Message userMessage = new UserMessage(topic);
+    // 3. 组装 Prompt
+    Prompt prompt = new Prompt(List.of(systemMessage, userMessage));
+    return chatClient
+        .prompt(prompt)     // 提示词
+        .call()             // 发送请求并获取模型生成的响应
+        .content();         // 从响应中提取文本内容
+}
 ```
 
 测试路由：http://localhost:8080/ai/chat/deepseek?topic=SpringAI是什么
@@ -228,21 +228,21 @@ PromptTemplate promptTemplate = PromptTemplate.builder().renderer(StTemplateRend
 - 若是 template 为 `推荐{year}年{platform}最火的音乐前3名`，模板参数并没有用 <> 分别作为开始和结束的占位符，结果如下所示：
 测试代码：
 ```java
-    @GetMapping("/ai/chat/deepseek")
-    public String deepSeek(String year, String platform) {
-        // 1. 原始模板
-        String template = "推荐{year}年{platform}最火的音乐前3名";
-        PromptTemplate promptTemplate = PromptTemplate.builder().renderer(
-                StTemplateRenderer.builder().startDelimiterToken('<').endDelimiterToken('>').build())
-            .template(template)
-            .build();
-        // 2. 定义变量值 +  3. 生成 prompt 对象
-        Prompt prompt = promptTemplate.create(Map.of("year", year, "platform", platform));
-        return chatClient
-            .prompt(prompt)     // 提示词
-            .call()             // 发送请求并获取模型生成的响应
-            .content();         // 从响应中提取文本内容
-    }
+@GetMapping("/ai/chat/deepseek")
+public String deepSeek(String year, String platform) {
+    // 1. 原始模板
+    String template = "推荐{year}年{platform}最火的音乐前3名";
+    PromptTemplate promptTemplate = PromptTemplate.builder().renderer(
+            StTemplateRenderer.builder().startDelimiterToken('<').endDelimiterToken('>').build())
+        .template(template)
+        .build();
+    // 2. 定义变量值 +  3. 生成 prompt 对象
+    Prompt prompt = promptTemplate.create(Map.of("year", year, "platform", platform));
+    return chatClient
+        .prompt(prompt)     // 提示词
+        .call()             // 发送请求并获取模型生成的响应
+        .content();         // 从响应中提取文本内容
+}
 ```
 结果：
 ```
@@ -292,21 +292,21 @@ PromptTemplate promptTemplate = PromptTemplate.builder().renderer(StTemplateRend
 测试代码：
 
 ```java
-    @GetMapping("/ai/chat/deepseek")
-    public String deepSeek(String year, String platform) {
-        // 1. 原始模板
-        String template = "推荐<year>年<platform>最火的音乐前3名";
-        PromptTemplate promptTemplate = PromptTemplate.builder().renderer(
-                StTemplateRenderer.builder().startDelimiterToken('<').endDelimiterToken('>').build())
-            .template(template)
-            .build();
-        // 2. 定义变量值 +  3. 生成 prompt 对象
-        Prompt prompt = promptTemplate.create(Map.of("year", year, "platform", platform));
-        return chatClient
-            .prompt(prompt)     // 提示词
-            .call()             // 发送请求并获取模型生成的响应
-            .content();         // 从响应中提取文本内容
-    }
+@GetMapping("/ai/chat/deepseek")
+public String deepSeek(String year, String platform) {
+    // 1. 原始模板
+    String template = "推荐<year>年<platform>最火的音乐前3名";
+    PromptTemplate promptTemplate = PromptTemplate.builder().renderer(
+            StTemplateRenderer.builder().startDelimiterToken('<').endDelimiterToken('>').build())
+        .template(template)
+        .build();
+    // 2. 定义变量值 +  3. 生成 prompt 对象
+    Prompt prompt = promptTemplate.create(Map.of("year", year, "platform", platform));
+    return chatClient
+        .prompt(prompt)     // 提示词
+        .call()             // 发送请求并获取模型生成的响应
+        .content();         // 从响应中提取文本内容
+}
 ```
 
 结果：

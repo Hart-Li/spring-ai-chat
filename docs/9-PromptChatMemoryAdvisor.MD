@@ -64,26 +64,28 @@ public class SpringAIConfig {
     // 其他代码相同，因此省略......
 }
 
-    @GetMapping("/ai/chat/deepseek/advisor")
-    public String deepSeekChatAdvisor(String question, String conversationId) {
-        // 1. 生成会话ID（使用session id 确保用户隔离）
-        // String conversationId = session.getId();
-        if (StringUtils.isEmpty(question) || StringUtils.isEmpty(conversationId)) {
-            return "error";
-        }
-        conversationId = "chat_memory:" + conversationId;
-        // 2. 创建模板 advisor
-        PromptChatMemoryAdvisor advisor = PromptChatMemoryAdvisor
-            .builder(chatMemory)
-            .conversationId(conversationId)
-            .build();
-        // 3.请求模型并提取文本响应内容
-        return chatClient.prompt()
-            .user(question)
-            .advisors(advisor)      // 使用顾问管理对话记忆
-            .call()
-            .content();
+
+
+@GetMapping("/ai/chat/deepseek/advisor")
+public String deepSeekChatAdvisor(String question, String conversationId) {
+    // 1. 生成会话ID（使用session id 确保用户隔离）
+    // String conversationId = session.getId();
+    if (StringUtils.isEmpty(question) || StringUtils.isEmpty(conversationId)) {
+        return "error";
     }
+    conversationId = "chat_memory:" + conversationId;
+    // 2. 创建模板 advisor
+    PromptChatMemoryAdvisor advisor = PromptChatMemoryAdvisor
+        .builder(chatMemory)
+        .conversationId(conversationId)
+        .build();
+    // 3.请求模型并提取文本响应内容
+    return chatClient.prompt()
+        .user(question)
+        .advisors(advisor)      // 使用顾问管理对话记忆
+        .call()
+        .content();
+}
 ```
 
 测试：
@@ -105,7 +107,7 @@ ASSISTANT:好的，一杯冰美式，少冰，加一份糖。
 
 PS: 需要在 application.yml 中开启 debug 日志级别才可以看到上述日志。配置如下： 
 
-```java
+```
 logging:
     level:
         org.springframework: debug
@@ -133,22 +135,24 @@ public class SpringAIConfig {
     // 其他代码相同，因此省略......
 }
 
-    @GetMapping("/ai/chat/deepseek/advisor")
-    public String deepSeekChatAdvisor(String question, String conversationId) {
-        // 1. 生成会话ID（使用session id 确保用户隔离）
-        // String conversationId = session.getId();
-        if (StringUtils.isEmpty(question) || StringUtils.isEmpty(conversationId)) {
-            return "error";
-        }
-        conversationId = "chat_memory:" + conversationId;
-        // 2.请求模型并提取文本响应内容
-        String finalConversationId = conversationId;
-        return chatClient.prompt()
-            .user(question)
-            .advisors(advisor -> advisor.param(ChatMemory.CONVERSATION_ID, finalConversationId))      // 使用顾问管理对话记忆
-            .call()
-            .content();
+
+
+@GetMapping("/ai/chat/deepseek/advisor")
+public String deepSeekChatAdvisor(String question, String conversationId) {
+    // 1. 生成会话ID（使用session id 确保用户隔离）
+    // String conversationId = session.getId();
+    if (StringUtils.isEmpty(question) || StringUtils.isEmpty(conversationId)) {
+        return "error";
     }
+    conversationId = "chat_memory:" + conversationId;
+    // 2.请求模型并提取文本响应内容
+    String finalConversationId = conversationId;
+    return chatClient.prompt()
+        .user(question)
+        .advisors(advisor -> advisor.param(ChatMemory.CONVERSATION_ID, finalConversationId))      // 使用顾问管理对话记忆
+        .call()
+        .content();
+}
 ```
 
 测试路由以及效果与单次创建模板顾问的效果相同，因此不再展示。

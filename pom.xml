@@ -45,8 +45,14 @@
         <dependency>
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-starter-model-openai</artifactId>
-            <version>${spring-ai.version}</version>
+            <version>1.0.1</version>
         </dependency>
+            <!-- zhipu ai 依赖 -->
+            <dependency>
+                <groupId>org.springframework.ai</groupId>
+                <artifactId>spring-ai-starter-model-zhipuai</artifactId>
+                <version>1.0.1</version>
+            </dependency>
         <!-- 引入 hat-memory-repository-jdbc -->
         <dependency>
             <groupId>org.springframework.ai</groupId>

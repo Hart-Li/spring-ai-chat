@@ -1,12 +1,10 @@
 package com.study.chat.config;
 
-import jakarta.annotation.Resource;
-import java.util.Arrays;
-import java.util.List;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.client.advisor.SafeGuardAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
+import org.springframework.ai.openai.OpenAiChatModel;
+import org.springframework.ai.zhipuai.ZhiPuAiChatModel;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -18,11 +16,22 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class SpringAIConfig {
+    // 创建基于 OpenAi 模型的客户端
+    @Bean(name = "deepseek")
+    public ChatClient deepSeekChatClient(OpenAiChatModel model) {
+        return ChatClient.builder(model)
+            .defaultSystem("你是 DeepSeek")
+            .build();
+    }
+    // 创建基于 Zhipuai 模型的客户端
+    @Bean(name = "zhipu")
+    public ChatClient zhipuChatClient(ZhiPuAiChatModel model) {
+        return ChatClient.builder(model)
+            .defaultSystem("你是智谱 AI")
+            .build();
+    }
 
-    @Resource
-    private RedisChatMemoryRepository redisChatMemoryRepository;
-
-    @Bean
+    /*@Bean
     public ChatClient openAiChatClient(ChatClient.Builder builder) {
         // 敏感词
         List<String> sensitiveWords = Arrays.asList("色情", "暴力", "有颜色的");
@@ -38,7 +47,7 @@ public class SpringAIConfig {
             .defaultSystem(
                 system -> system.text("你是一名{role}，擅长精准而简洁得回答问题")
                     .param("role", "订购助手")).build();
-    }
+    }*/
 
     // 创建特定的 ChatMemory实例
     /*@Bean

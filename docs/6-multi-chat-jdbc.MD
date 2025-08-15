@@ -7,7 +7,7 @@
 **对话记忆**的存储库默认使用内存（`InMemoryChatMemoryRepository`），数据容易丢失。
 
 ```java
-    // 创建特定的 ChatMemory实例
+// 创建特定的 ChatMemory实例
 @Bean
 public ChatMemory chatMemory() {
     return MessageWindowChatMemory.builder()
@@ -51,24 +51,24 @@ public interface ChatMemoryRepository {
 引入相关 maven 依赖：
 
 ```
-        <!-- 引入 hat-memory-repository-jdbc -->
-        <dependency>
-            <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-starter-model-chat-memory-repository-jdbc</artifactId>
-            <version>1.0.1</version>
-        </dependency>
-        <!-- mysql驱动 -->
-        <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-            <version>9.1.0</version>
-        </dependency>
+<!-- 引入 hat-memory-repository-jdbc -->
+<dependency>
+    <groupId>org.springframework.ai</groupId>
+    <artifactId>spring-ai-starter-model-chat-memory-repository-jdbc</artifactId>
+    <version>1.0.1</version>
+</dependency>
+<!-- mysql驱动 -->
+<dependency>
+    <groupId>com.mysql</groupId>
+    <artifactId>mysql-connector-j</artifactId>
+    <version>9.1.0</version>
+</dependency>
 ```
 
 使用：
 
 ```java
-    // 创建基于 JDBC 存储对话记忆的 ChatMemory 实例
+// 创建基于 JDBC 存储对话记忆的 ChatMemory 实例
 @Bean
 public ChatMemory chatMemory(JdbcChatMemoryRepository jdbcChatMemoryRepository) {
     return MessageWindowChatMemory.builder()
@@ -166,35 +166,35 @@ PS: 注意这里的表名必须是 `SPRING_AI_CHAT_MEMORY` 大写，不能小写
 修改代码如下：
 
 ```java
-    @GetMapping("/ai/chat/deepseek")
-    public String deepSeek(String question, String conversationId) {
-        // 1. 生成会话ID（使用session id 确保用户隔离）
-        // String conversationId = session.getId();
-        System.out.println("conversationId: " + conversationId);
-        // 2. 初始化系统消息
-        Message systemMessage = new SystemMessage("你是一名Java架构师，擅长精准而简洁的回答问题");
-        if (chatMemory.get(conversationId).isEmpty()) {
-            chatMemory.add(conversationId, systemMessage);  // 添加至对话记忆
-        }
-
-        // 3. 手动获取历史消息
-        List<Message> historyMessages = chatMemory.get(conversationId);
-        System.out.println("historyMessages: " + historyMessages);
-        // 4.用户消息
-        Message userMessage = new UserMessage(question);
-        // 新建集合，避免污染历史消息
-        List<Message> promptMessages = new ArrayList<>(historyMessages);
-        // 本次用户消息合并到历史消息中
-        promptMessages.add(userMessage);
-        // 5. 完成 Prompt 对象
-        Prompt prompt = new Prompt(promptMessages);
-        // 6. 发送至 AI 模型，提取响应文本
-        String responseText = chatClient.prompt(prompt).call().content();
-        // 7. 本次 AI 响应添加至对话记忆（助手角色）
-        chatMemory.add(conversationId, new AssistantMessage(responseText));
-        // 8. 返回响应文本
-        return responseText;
+@GetMapping("/ai/chat/deepseek")
+public String deepSeek(String question, String conversationId) {
+    // 1. 生成会话ID（使用session id 确保用户隔离）
+    // String conversationId = session.getId();
+    System.out.println("conversationId: " + conversationId);
+    // 2. 初始化系统消息
+    Message systemMessage = new SystemMessage("你是一名Java架构师，擅长精准而简洁的回答问题");
+    if (chatMemory.get(conversationId).isEmpty()) {
+        chatMemory.add(conversationId, systemMessage);  // 添加至对话记忆
     }
+
+    // 3. 手动获取历史消息
+    List<Message> historyMessages = chatMemory.get(conversationId);
+    System.out.println("historyMessages: " + historyMessages);
+    // 4.用户消息
+    Message userMessage = new UserMessage(question);
+    // 新建集合，避免污染历史消息
+    List<Message> promptMessages = new ArrayList<>(historyMessages);
+    // 本次用户消息合并到历史消息中
+    promptMessages.add(userMessage);
+    // 5. 完成 Prompt 对象
+    Prompt prompt = new Prompt(promptMessages);
+    // 6. 发送至 AI 模型，提取响应文本
+    String responseText = chatClient.prompt(prompt).call().content();
+    // 7. 本次 AI 响应添加至对话记忆（助手角色）
+    chatMemory.add(conversationId, new AssistantMessage(responseText));
+    // 8. 返回响应文本
+    return responseText;
+}
 ```
 测试路由：
 1. http://localhost:8080/ai/chat/deepseek?question=我是HartLi，是一名Java架构师，知识分享者，请记住我，以便我们后面的对话&conversationId=1234567890

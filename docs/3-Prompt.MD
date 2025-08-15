@@ -152,22 +152,22 @@ public class ChatController {
 #### 2.2 简化用法
 
 ```java
-    @GetMapping("/ai/chat/deepseek")
-    public String deepSeek(String question) {
-        // 1.模型参数
-        ChatOptions chatOptions = ChatOptions.builder()
-            .temperature(0.7)  // 多样化系数
-            .maxTokens(500)    // 限制 Token 用量
-            .build();
-        // 2. 模型调用
-        return chatClient
-            .prompt()               // 提示词
-            .system("你是营销总监")   // 系统角色
-            .user(question)         // 用户输入
-            .options(chatOptions)   // 模型参数
-            .call()                 // 发送请求并获取模型生成的响应
-            .content();             // 从响应中提取文本内容
-    }
+@GetMapping("/ai/chat/deepseek")
+public String deepSeek(String question) {
+    // 1.模型参数
+    ChatOptions chatOptions = ChatOptions.builder()
+        .temperature(0.7)  // 多样化系数
+        .maxTokens(500)    // 限制 Token 用量
+        .build();
+    // 2. 模型调用
+    return chatClient
+        .prompt()               // 提示词
+        .system("你是营销总监")   // 系统角色
+        .user(question)         // 用户输入
+        .options(chatOptions)   // 模型参数
+        .call()                 // 发送请求并获取模型生成的响应
+        .content();             // 从响应中提取文本内容
+}
 ```
 
 #### 2.3 全局配置
@@ -211,21 +211,21 @@ Prompt 通过结构化消息角色（SYSTEM/USER/ASSISTANT）明确交互意图�
 ```
 
 ```java
-    @GetMapping("/ai/chat/deepseek")
-    public String deepSeek(String question) {
-        // 1. 系统角色的消息
-        Message systemMessage = new SystemMessage("你是营销总监");
-        // 2. 用户角色的消息
-        Message userMessage = new UserMessage(question);
-        // 3. 助手角色消息
-        Message assistantMessage = new AssistantMessage("要求价格价格前必须加￥");
-        // 4. 组合 Prompt
-        Prompt prompt = new Prompt(List.of(systemMessage, userMessage, assistantMessage));
-        return chatClient
-            .prompt(prompt)     // 提示词
-            .call()             // 发送请求并获取模型生成的响应
-            .content();         // 从响应中提取文本内容
-    }
+@GetMapping("/ai/chat/deepseek")
+public String deepSeek(String question) {
+    // 1. 系统角色的消息
+    Message systemMessage = new SystemMessage("你是营销总监");
+    // 2. 用户角色的消息
+    Message userMessage = new UserMessage(question);
+    // 3. 助手角色消息
+    Message assistantMessage = new AssistantMessage("要求价格价格前必须加￥");
+    // 4. 组合 Prompt
+    Prompt prompt = new Prompt(List.of(systemMessage, userMessage, assistantMessage));
+    return chatClient
+        .prompt(prompt)     // 提示词
+        .call()             // 发送请求并获取模型生成的响应
+        .content();         // 从响应中提取文本内容
+}
 ```
 
 测试路由：http://localhost:8080/ai/chat/deepseek?question=参考苹果 iPhone16 系列的营销，写一份突出独特卖点、能吸引消费者购买的荣耀40系列产品推广方案
