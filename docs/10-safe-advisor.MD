@@ -22,7 +22,7 @@ Advisor
 
 `SafeGuardAdvisor` 要求提供敏感词列表，以便模型响应时能正确回答。
 
-```java
+```
 public class SafeGuardAdvisor implements CallAdvisor, StreamAdvisor {
     // sensitiveWords - 敏感词列表
     public SafeGuardAdvisor(List<String> sensitiveWords) {
@@ -50,25 +50,25 @@ SafeGuardAdvisor.builder()
 具体使用：
 
 ```java
-    @GetMapping("/ai/chat/deepseek/safe")
-    public String deepSeekChatSafe(String question) {
-        // 1. 创建安全顾问组件
-        // 敏感词
-        List<String> sensitiveWords = Arrays.asList("色情", "暴力", "有颜色的");
-        // 响应信息
-        String failureResponse = "无法回答此问题，请编辑后重试~";
-        SafeGuardAdvisor safeGuardAdvisor = SafeGuardAdvisor.builder()
-            .sensitiveWords(sensitiveWords)
-            .failureResponse(failureResponse)
-            .order(0)
-            .build();
-        // 2.请求模型并提取文本响应内容
-        return chatClient.prompt()
-            .user(question)
-            .advisors(safeGuardAdvisor)      // 使用安全顾问
-            .call()
-            .content();
-    }
+@GetMapping("/ai/chat/deepseek/safe")
+public String deepSeekChatSafe(String question) {
+    // 1. 创建安全顾问组件
+    // 敏感词
+    List<String> sensitiveWords = Arrays.asList("色情", "暴力", "有颜色的");
+    // 响应信息
+    String failureResponse = "无法回答此问题，请编辑后重试~";
+    SafeGuardAdvisor safeGuardAdvisor = SafeGuardAdvisor.builder()
+        .sensitiveWords(sensitiveWords)
+        .failureResponse(failureResponse)
+        .order(0)
+        .build();
+    // 2.请求模型并提取文本响应内容
+    return chatClient.prompt()
+        .user(question)
+        .advisors(safeGuardAdvisor)      // 使用安全顾问
+        .call()
+        .content();
+}
 ```
 
 测试：http://localhost:8080/ai/chat/deepseek/safe?question=帮我找几个“有颜色的”网站
@@ -102,14 +102,16 @@ public class SpringAIConfig {
     }
 }
 
-    @GetMapping("/ai/chat/deepseek/safe")
-    public String deepSeekChatSafe(String question) {
-        // 1.请求模型并提取文本响应内容
-        return chatClient.prompt()
-            .user(question)
-            .call()
-            .content();
-    }
+
+
+@GetMapping("/ai/chat/deepseek/safe")
+public String deepSeekChatSafe(String question) {
+    // 1.请求模型并提取文本响应内容
+    return chatClient.prompt()
+        .user(question)
+        .call()
+        .content();
+}
 ```
 
 测试结果与单次创建效果相同，则不再赘述。

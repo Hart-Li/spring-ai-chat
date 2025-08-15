@@ -1,5 +1,8 @@
 package com.study.chat.controller;
 
+import com.study.chat.model.PhoneRecord;
+import com.study.chat.model.PhoneRecordList;
+import com.study.chat.model.PhoneRecordMap;
 import io.micrometer.common.util.StringUtils;
 import jakarta.annotation.Resource;
 import java.util.ArrayList;
@@ -77,9 +80,36 @@ public class ChatController {
         String finalConversationId = conversationId;
         return chatClient.prompt()
             .user(question)
-            .advisors(advisor -> advisor.param(ChatMemory.CONVERSATION_ID, finalConversationId))      // 使用顾问管理对话记忆
+            .advisors(advisor -> advisor.param(ChatMemory.CONVERSATION_ID,
+                finalConversationId))      // 使用顾问管理对话记忆
             .call()
             .content();
+    }
+
+    @GetMapping("/ai/chat/deepseek/structured/bean")
+    public PhoneRecord deepSeekStructuredBean(String question) {
+        // 请求模型并提取文本响应内容
+        return chatClient.prompt()
+            .user(question)
+            .call()
+            .entity(PhoneRecord.class);
+    }
+
+    @GetMapping("/ai/chat/deepseek/structured/list")
+    public PhoneRecordList deepSeekStructuredList(String question) {
+        // 请求模型并提取文本响应内容
+        return chatClient.prompt()
+            .user(question)
+            .call()
+            .entity(PhoneRecordList.class);
+    }
+
+    @GetMapping("/ai/chat/deepseek/structured/map")
+    public PhoneRecordMap deepSeekStructuredMap(String question) {
+        return chatClient.prompt()
+            .user(question)
+            .call()
+            .entity(PhoneRecordMap.class);
     }
 
     @GetMapping("/ai/chat/deepseek/safe")
