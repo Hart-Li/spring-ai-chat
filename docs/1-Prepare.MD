@@ -23,7 +23,7 @@
 ![ds 创建 API-KEY 成功](images/1/ds-create-apikey-success.png)
 
 我之前的 API-KEY
-API-KEY:sk-d0772cb5fef14e49a99c37e29db642c7
+API-KEY:sk-d0772***********************42c7
 
 ---
 
@@ -81,7 +81,7 @@ spring:
   ai:
     openai:
       # ds 提供的 API 密钥
-      api-key: sk-d0772cb5fef14e49a99c37e29db642c7
+      api-key: sk-d0772***********************42c7
       #ds 开放平台地址
       base-url: https://api.deepseek.com
       chat:
