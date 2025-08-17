@@ -1,5 +1,6 @@
 package com.study.chat.controller;
 
+import com.study.chat.tools.DateTimeTools;
 import jakarta.annotation.Resource;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,11 +17,23 @@ public class ChatController {
 
     @Resource(name = "deepseek")
     private ChatClient chatClient;
+    @Resource
+    private DateTimeTools dateTimeTools;
 
     @GetMapping("/ai/chat")
     public String chat(String question) {
         // 请求模型并提取文本响应内容
         return chatClient.prompt().user(question).call().content();
+    }
+
+    @GetMapping("/ai/chat/tools")
+    public String chatWithTools(String question) {
+        // 请求模型并提取文本响应内容
+        return chatClient.prompt()
+            .user(question)
+            .tools(dateTimeTools)
+            .call()
+            .content();
     }
 
 }
