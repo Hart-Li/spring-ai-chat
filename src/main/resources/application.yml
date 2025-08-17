@@ -50,3 +50,7 @@ spring:
 logging:
   level:
     org.springframework: debug
+
+weather:
+  gaode:
+    key: 75ab4f4cd73970684729bd5b5266df84

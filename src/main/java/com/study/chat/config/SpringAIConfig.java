@@ -1,6 +1,7 @@
 package com.study.chat.config;
 
 import com.study.chat.tools.DateTimeTools;
+import com.study.chat.tools.WeatherTools;
 import jakarta.annotation.Resource;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.memory.ChatMemory;
@@ -20,12 +21,14 @@ import org.springframework.context.annotation.Configuration;
 public class SpringAIConfig {
     @Resource
     private DateTimeTools dateTimeTools;
+    @Resource
+    private WeatherTools weatherTools;
     // 创建基于 OpenAi 模型的客户端
     @Bean(name = "deepseek")
     public ChatClient deepSeekChatClient(OpenAiChatModel model) {
         return ChatClient.builder(model)
             .defaultSystem("你是 DeepSeek")
-            .defaultTools(dateTimeTools)
+            .defaultTools(dateTimeTools, weatherTools)
             .build();
     }
     // 创建基于 Zhipuai 模型的客户端
