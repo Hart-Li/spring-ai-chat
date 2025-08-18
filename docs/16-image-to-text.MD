@@ -37,6 +37,56 @@ PS: 本次视觉理解的前置知识点是 “Spring AI 集成智谱AI”，若
 
 2. 准备图像（图片分析、报告解读、文字提取）
 3. 创建基于默认模型的客户端
+```java
+@Configuration
+public class SpringAIConfig {
+   // 创建基于 Zhipuai 模型的客户端
+   @Bean(name = "zhipu")
+   public ChatClient zhipuChatClient(ZhiPuAiChatModel model) {
+      return ChatClient.builder(model)
+              .defaultSystem("你是AI助手，回答问题简洁又明确")
+              .build();
+   }
+}
+```
 4. 创建响应用户请求的Controller
 5. 实现图像资源加载
 6. 客户端方法链中设置用户请求和图像资源
+上面三步的代码实现：
+
+```java
+@RestController
+public class ImageDetectionController {
+
+    @Resource(name = "zhipu")
+    private ChatClient chatClient;
+
+    @Value("classpath:images/girl.png")
+    private org.springframework.core.io.Resource image; // 图像资源
+
+    @GetMapping("/ai/zhipu/image_detection")
+    public String imageDetection(String question) {
+        return chatClient.prompt()
+            .user(u -> {
+                u.text(question);
+                u.media(MimeTypeUtils.IMAGE_PNG, image);
+            })
+            .call()
+            .content();
+    }
+}
+```
+* 测试1
+  * 测试图片：[女生图片](images/16/girl.png)
+  * 测试路由：http://localhost:8080/ai/zhipu/image_detection?question=请分析图片中的内容
+  * 测试结果：![女生图片解析结果](images/16/girl-image-result.png)
+   
+* 测试2
+  * 测试图片：[报告解析图片](images/16/report.png)
+  * 测试路由：http://localhost:8080/ai/zhipu/image_detection?question=帮我解读一下图片报告
+  * 测试结果：![报告解析结果](images/16/report-image-result.png)
+* 测试3
+  * 测试图片：[文字提取图片](images/16/text.png)
+  * 测试路由：http://localhost:8080/ai/zhipu/image_detection?question=帮我提取图片中的文字
+  * 测试结果：![文字提取结果](images/16/text-image-result.png)
+

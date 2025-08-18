@@ -41,7 +41,7 @@ public interface ImageModel extends Model<ImagePrompt, ImageResponse> {
 4. 获取模型响应：ImageResponse 类存储 call() 方法返回的响应
 5. 解析图像地址：ImageResponse.getResult().getOutput().getUrl()
 6. 响应前端：  
-```java
+```
 正确响应：
     ResponseEntity.ok(Map.of("prompt", prompt, "data", url));
 错误返回：
@@ -60,7 +60,7 @@ public class ImageGenerationController {
     @Resource(name = "zhiPuAiImageModel")
     private ImageModel imageModel;
 
-    @GetMapping("/ai/zhihu/image")
+    @GetMapping("/ai/zhipu/image")
     public ResponseEntity<Map<String, Object>> getImage(
         @RequestParam(defaultValue = "毛和狗") String prompt) {
         // 1. 图像参数
@@ -86,7 +86,7 @@ public class ImageGenerationController {
 ```
 
 测试路由：<br/>
-http://localhost:8080/ai/zhihu/image?prompt=一位身穿白色连衣裙的女生，坐在河边的树下看书
+http://localhost:8080/ai/zhipu/image?prompt=一位身穿白色连衣裙的女生，坐在河边的树下看书
 
 测试结果：
 ![img.png](images/15/first-result.png)

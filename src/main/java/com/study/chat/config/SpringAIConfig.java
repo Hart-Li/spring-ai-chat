@@ -35,7 +35,7 @@ public class SpringAIConfig {
     @Bean(name = "zhipu")
     public ChatClient zhipuChatClient(ZhiPuAiChatModel model) {
         return ChatClient.builder(model)
-            .defaultSystem("你是智谱 AI")
+            .defaultSystem("你是AI助手，回答问题简洁又明确")
             .build();
     }
 

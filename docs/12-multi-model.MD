@@ -30,7 +30,7 @@ spring:
    2. 点击 添加新的 API Key
    3. 填写 API Key 的名称，点击确定会生成一个新的 API Key
 ![生成智谱AI新的API Key](images/12/gen-zhipu-api-key.png)
-![API Keys](images/12/zhihu-api-keys.png)
+![API Keys](images/12/zhipu-api-keys.png)
 3. 获取基础服务地址（后面会在 application.yml 配置中体现）
 
 --- 

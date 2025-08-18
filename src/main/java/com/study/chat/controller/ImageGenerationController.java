@@ -25,7 +25,7 @@ public class ImageGenerationController {
     @Resource(name = "zhiPuAiImageModel")
     private ImageModel imageModel;
 
-    @GetMapping("/ai/zhihu/image")
+    @GetMapping("/ai/zhipu/image")
     public ResponseEntity<Map<String, Object>> getImage(
         @RequestParam(defaultValue = "毛和狗") String prompt) {
         // 1. 图像参数
