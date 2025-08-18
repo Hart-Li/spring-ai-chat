@@ -33,9 +33,8 @@ spring:
       base-url: https://open.bigmodel.cn/api/paas
       chat:
         options:
-          model: cogview-3-flash     # 文生图大模型
+          model: glm-4.1v-thinking-flash     # 视觉理解大模型
           temperature: 0.7
-          max-tokens: 1024
     chat:
       memory:
         repository:
