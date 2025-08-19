@@ -1,4 +1,4 @@
-## PromptTemplate
+## 小白学SpringAI-PromptTemplate
 
 ---
 

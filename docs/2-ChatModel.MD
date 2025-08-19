@@ -1,4 +1,4 @@
-## Chat Model
+## 小白学SpringAI-Chat Model
 
 ---
 

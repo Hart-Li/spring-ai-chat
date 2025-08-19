@@ -1,4 +1,4 @@
-## Prompt
+## 小白学SpringAI-Prompt
 
 ---
 

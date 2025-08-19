@@ -1,4 +1,4 @@
-## Advisor 如何守护对话安全
+## 小白学SpringAI-Advisor 如何守护对话安全
 
 ---
 

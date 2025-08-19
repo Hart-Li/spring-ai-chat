@@ -1,4 +1,4 @@
-## Advisor 自动管理对话记忆
+## 小白学SpringAI-Advisor 自动管理对话记忆
 
 ---
 
