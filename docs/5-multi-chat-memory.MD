@@ -44,7 +44,7 @@ public interface ChatMemory {
 
 ### 3. 基于内存的多轮对话实现
 
-![基于内存的多轮对话实现](images/5/chat-memory.png)
+![基于内存的多轮对话实现](materials/5/chat-memory.png)
 
 ```
 1. AI 模型接收 Prompt 输入，使用 ChatResponse 输出（响应）

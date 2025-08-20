@@ -29,8 +29,8 @@ spring:
    1. 右上角点击 API Key 跳转到 API Key 的管理页面
    2. 点击 添加新的 API Key
    3. 填写 API Key 的名称，点击确定会生成一个新的 API Key
-![生成智谱AI新的API Key](images/12/gen-zhipu-api-key.png)
-![API Keys](images/12/zhipu-api-keys.png)
+![生成智谱AI新的API Key](materials/12/gen-zhipu-api-key.png)
+![API Keys](materials/12/zhipu-api-keys.png)
 3. 获取基础服务地址（后面会在 application.yml 配置中体现）
 
 --- 
@@ -127,7 +127,7 @@ public class ChatController {
 http://localhost:8080/ai/chat?question=你是谁
 
 测试结果：
-![智谱 AI 结果](images/12/zhipu-ai-result.png)
+![智谱 AI 结果](materials/12/zhipu-ai-result.png)
 
 切换为使用`DeepSeek`模型
 
@@ -150,5 +150,5 @@ public class ChatController {
 http://localhost:8080/ai/chat?question=你是谁
 
 测试结果：
-![DeepSeek AI结果](images/12/ds-ai-result.png)
+![DeepSeek AI结果](materials/12/ds-ai-result.png)
 

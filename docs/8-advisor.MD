@@ -14,7 +14,7 @@
 
 回顾 **`基于内存的多轮会话`** 的实现流程：
 
-![基于内存的多轮会话流程图](images/8/chat-memory-base-flow-chart.png)
+![基于内存的多轮会话流程图](materials/8/chat-memory-base-flow-chart.png)
 
 > 核心业务在于发送请求、模型响应，聊天记忆的管理属于业务增强。
 

@@ -15,7 +15,7 @@
 ### 2. 听觉理解模型
 
 `SpringAI`目前仅支持`OpenAI`的语音识别模型（如：whisper-1），未来计划通过抽象通用接口兼容更多服务商。
-![SpringAI支持ASR的大模型](images/18/spring-ai-supported-asr-models.png)
+![SpringAI支持ASR的大模型](materials/18/spring-ai-supported-asr-models.png)
 
 > PS:本次教程不会使用 OpenAI 的 ASR 模型做演示：
 > 1.网络访问限制
@@ -27,6 +27,7 @@
 ### 3. Qwen-Audio-ASR
 
 `Qwen-Audio-ASR` 是通义千问系列语音识别模型，支持中、英文识别。
+![千问ASR介绍](materials/18/qwen-asr-desc.png)
 
 ### 4. 实现 ASR
 
@@ -114,4 +115,18 @@ public class AudioDetectionController {
 测试路由：<br/>
 http://localhost:8080/ai/qwen/asr
 测试结果：
-![测试结果](images/18/asr-result.png)
+![测试结果](materials/18/asr-result.png)
+
+可以看到目前的结果是一个多层数据结构，我们只想要最终的文本结果应该如何实现呢？
+
+修改 QwenASR 类的第五步：5. 响应结果转换为 JSON 文本
+
+```
+// 5. 响应结果转换为 JSON 文本
+            return result.getOutput().getChoices().get(0).getMessage().getContent().get(0).get("text").toString();
+```
+
+同样的测试路由
+
+测试结果：
+![第二次测试结果](materials/18/asr-result-2.png)

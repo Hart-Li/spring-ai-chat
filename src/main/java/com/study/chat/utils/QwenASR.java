@@ -5,7 +5,6 @@ import com.alibaba.dashscope.aigc.multimodalconversation.MultiModalConversationP
 import com.alibaba.dashscope.aigc.multimodalconversation.MultiModalConversationResult;
 import com.alibaba.dashscope.common.MultiModalMessage;
 import com.alibaba.dashscope.common.Role;
-import com.alibaba.dashscope.utils.JsonUtils;
 import java.util.Collections;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
@@ -46,7 +45,7 @@ public class QwenASR {
             // 4. 向模型发送请求并存储模型响应结果
             MultiModalConversationResult result = conversation.call(param);
             // 5. 响应结果转换为 JSON 文本
-            return JsonUtils.toJson(result);
+            return result.getOutput().getChoices().get(0).getMessage().getContent().get(0).get("text").toString();
         } catch (Exception e) {
             e.printStackTrace();
             return "识别异常！";

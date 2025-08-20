@@ -15,7 +15,7 @@
 您好，我是您的专属客服YOYO，有什么为您效劳的？
 ......
 ```
-![PromptTemplate 处理流程](images/4/prompt-template-handle.png)
+![PromptTemplate 处理流程](materials/4/prompt-template-handle.png)
 
 ```java
 @GetMapping("/ai/chat/deepseek")
@@ -150,11 +150,11 @@ public String deepSeek(String topic) {
 
 可以将提示数据放在文件中（如：system-message.st），然后将该资源直接传递给 PromptTemplate。
 
-![prompt_template加载外部资源](images/4/prompt-template-use-resource.png)
+![prompt_template加载外部资源](materials/4/prompt-template-use-resource.png)
 
 外部资源文件中存储的是代码中使用的 SystemPromptTempalte
 
-![外部资源](images/4/prompt-template-resource-data.png)
+![外部资源](materials/4/prompt-template-resource-data.png)
 
 ```java
 @GetMapping("/ai/chat/deepseek")

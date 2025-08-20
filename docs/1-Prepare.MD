@@ -8,19 +8,19 @@
 
 1. 注册步骤省略
 2. 在 ds 右上角点击跳转到 API 开放平台页面
-   ![ds 官网](images/1/ds-official-website.png)
+   ![ds 官网](materials/1/ds-official-website.png)
 3. 进行充值
 
 > PS:首次充值需要进行实名认证
 
-![ds 充值](images/1/ds-recharge.png)
+![ds 充值](materials/1/ds-recharge.png)
 
 4. 创建 API-KEY
 
 > PS：关闭确认框之前要先复制好 api-key!
 
-![ds 创建 API-KEY](images/1/ds-create-apikey.png)
-![ds 创建 API-KEY 成功](images/1/ds-create-apikey-success.png)
+![ds 创建 API-KEY](materials/1/ds-create-apikey.png)
+![ds 创建 API-KEY 成功](materials/1/ds-create-apikey-success.png)
 
 我之前的 API-KEY
 API-KEY:sk-d0772***********************42c7
@@ -30,7 +30,7 @@ API-KEY:sk-d0772***********************42c7
 ### 创建 Springboot 项目以及引入依赖
 
 1. 创建一个空的 Springboot 项目即可
-   ![创建项目](images/1/idea-create-project.png)
+   ![创建项目](materials/1/idea-create-project.png)
 
 点击了 Next 之后，直接点击 Create 按钮，等下直接引入第二步的依赖即可。
 

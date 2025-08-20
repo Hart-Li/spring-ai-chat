@@ -73,7 +73,7 @@ public String deepSeekChatSafe(String question) {
 
 测试：http://localhost:8080/ai/chat/deepseek/safe?question=帮我找几个“有颜色的”网站
 
-![safe-result](images/10/safe-result.png)
+![safe-result](materials/10/safe-result.png)
 
 ---
 

@@ -105,7 +105,7 @@ spring:
 
 ```
 
-![预制的表结构文件](images/6/pre_prepared_db_schema.png)
+![预制的表结构文件](materials/6/pre_prepared_db_schema.png)
 
 `schema-hsqldb.sql` 内部的 SQL 脚本如下：
 
@@ -155,7 +155,7 @@ PS: 注意这里的表名必须是 `SPRING_AI_CHAT_MEMORY` 大写，不能小写
 2. http://localhost:8080/ai/chat/deepseek?question=我是谁
 
 全部执行完成之后看到 MySQL 中存储了三条消息，如下所示：
-![MySQL的测试结果](images/6/mysql-test-result.png)
+![MySQL的测试结果](materials/6/mysql-test-result.png)
 
 > 若是重启项目，对应的 DB 数据不会清空，但是 AI 却不能识别我的身份了。
 > 
@@ -201,11 +201,11 @@ public String deepSeek(String question, String conversationId) {
 2. http://localhost:8080/ai/chat/deepseek?question=我是谁&conversationId=1234567890
 
 DB 数据如下：
-![MySQL测试数据](images/6/mysql-test2-1-result.png)
+![MySQL测试数据](materials/6/mysql-test2-1-result.png)
 
 重启项目后继续测试：
 1. http://localhost:8080/ai/chat/deepseek?question=我是谁&conversationId=1234567890
 
 此时仍然可以知道我的身份。
 
-![重启服务后MySQL测试数据](images/6/mysql-test2-2-result.png)
+![重启服务后MySQL测试数据](materials/6/mysql-test2-2-result.png)

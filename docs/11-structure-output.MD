@@ -6,7 +6,7 @@
 
 AI 模型生成的响应通常为“**自由文本格式**”，这给“**下游应用程序**”的处理和集成带来了不便。如果直接将该文本传递给前端展示或者写入数据库，需要额外的解析逻辑，容易出错。
 
-![为什么需要结构化输出](images/11/why-need-structure-output.png)
+![为什么需要结构化输出](materials/11/why-need-structure-output.png)
 
 ---
 

@@ -12,7 +12,7 @@
 
 支持视觉理解的大模型：`OpenAI`、`QianFan`、`智谱AI` 等等。
 
-![free-models.png](images/16/free-models.png)
+![free-models.png](materials/16/free-models.png)
 
 PS: 本次视觉理解的前置知识点是 “Spring AI 集成智谱AI”，若不清楚的话可以参考 [12-multi-model](./12-multi-model.MD)。
 
@@ -77,16 +77,16 @@ public class ImageDetectionController {
 }
 ```
 * 测试1
-  * 测试图片：[女生图片](images/16/girl.png)
+  * 测试图片：[女生图片](materials/16/girl.png)
   * 测试路由：http://localhost:8080/ai/zhipu/image_detection?question=请分析图片中的内容
-  * 测试结果：![女生图片解析结果](images/16/girl-image-result.png)
+  * 测试结果：![女生图片解析结果](materials/16/girl-image-result.png)
    
 * 测试2
-  * 测试图片：[报告解析图片](images/16/report.png)
+  * 测试图片：[报告解析图片](materials/16/report.png)
   * 测试路由：http://localhost:8080/ai/zhipu/image_detection?question=帮我解读一下图片报告
-  * 测试结果：![报告解析结果](images/16/report-image-result.png)
+  * 测试结果：![报告解析结果](materials/16/report-image-result.png)
 * 测试3
-  * 测试图片：[文字提取图片](images/16/text.png)
+  * 测试图片：[文字提取图片](materials/16/text.png)
   * 测试路由：http://localhost:8080/ai/zhipu/image_detection?question=帮我提取图片中的文字
-  * 测试结果：![文字提取结果](images/16/text-image-result.png)
+  * 测试结果：![文字提取结果](materials/16/text-image-result.png)
 

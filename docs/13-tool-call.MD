@@ -38,7 +38,7 @@
 
 实测：DeepSeek（OpenAI-proxy）支持信息检索工具，采取行动工具受限。信息检索工具调用需要依赖用户侧集成（用户提供自定义工具）。
 
-![DeepSeek 支持的工具](images/13/ds-support-tool-classify.png)
+![DeepSeek 支持的工具](materials/13/ds-support-tool-classify.png)
 
 ---
 
@@ -106,10 +106,10 @@ public class ChatController {
 1. http://localhost:8080/ai/chat?question=现在的时间是？
 
 测试结果：
-![无tools的结果](images/13/ds-without-tool-result.png)
+![无tools的结果](materials/13/ds-without-tool-result.png)
 
 2. http://localhost:8080/ai/chat/tools?question=现在的时间是？
-![有tools的结果](images/13/ds-with-tool-result.png)
+![有tools的结果](materials/13/ds-with-tool-result.png)
 
 可以看到有工具是有结果的，无工具回答不了当前时间的问题。
 
@@ -136,7 +136,7 @@ public class SpringAIConfig {
 再来测试一下，这次我们使用之前无指定 tool 的接口：http://localhost:8080/ai/chat?question=现在的时间是？
 
 测试结果：
-![使用全局的tool的结果](images/13/ds-with-global-tool-result.png)
+![使用全局的tool的结果](materials/13/ds-with-global-tool-result.png)
 
 可以看到现在是能有结果的了。
 
@@ -174,6 +174,6 @@ public class DateTimeTools {
 测试路由：<br/>http://localhost:8080/ai/chat?question=设定一个早上9点的闹钟
 
 测试结果：
-![采取行动工具结果](images/13/action-tools-result.png)
+![采取行动工具结果](materials/13/action-tools-result.png)
 
 

@@ -14,9 +14,9 @@
 
 1. 注册账号（省略）
 2. 实名认证（省略）
-3. 创建应用 ![new_app](images/14/gaode_add_app.png)
-4. 添加 Key![new_key](images/14/gaode_add_key.png)
-![add_key_result](images/14/daode_add_key_result.png)
+3. 创建应用 ![new_app](materials/14/gaode_add_app.png)
+4. 添加 Key![new_key](materials/14/gaode_add_key.png)
+![add_key_result](materials/14/daode_add_key_result.png)
 与前边 DeepSeek 以及智谱AI的流程类似，这里不再赘述。
 
 ```
@@ -75,4 +75,4 @@ public class SpringAIConfig {
 测试路由：<br/>
 http://localhost:8080/ai/chat?question=今天北京的天气怎么样？
 
-![测试结果](images/14/test-result.png)
+![测试结果](materials/14/test-result.png)

@@ -12,7 +12,7 @@
 
 支持文生图的大模型： `OpenAO`、`QianFan`、`智谱 AI` 等等。
 
-![文生图大模型](images/15/text-to-image-model.png)
+![文生图大模型](materials/15/text-to-image-model.png)
 
 PS: 本次文生图的前置知识点是 “Spring AI 整合智谱AI”，若不清楚的话可以参考 [12-multi-model](./12-multi-model.MD)。
 
@@ -89,7 +89,7 @@ public class ImageGenerationController {
 http://localhost:8080/ai/zhipu/image?prompt=一位身穿白色连衣裙的女生，坐在河边的树下看书
 
 测试结果：
-![img.png](images/15/first-result.png)
+![img.png](materials/15/first-result.png)
 
 PS:  通用的参数配置如下：
 

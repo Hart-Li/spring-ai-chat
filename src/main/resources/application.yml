@@ -16,7 +16,7 @@ spring:
 
   ai:
     dashscope:
-      api-key: sk-f427c6f1a2c9456abf360a296a5afbfd  # 百炼平台创建的 API-Key
+      api-key: sk-0f56eb281a0b4cf4bac813e7c452d3ca  # 百炼平台创建的 API-Key
     openai:
       # ds 提供的 API 密钥
       api-key: sk-d0772cb5fef14e49a99c37e29db642c7

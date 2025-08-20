@@ -305,7 +305,7 @@ public String deepSeek(String question, String conversationId) {
 **对数据进行探索：**
 
 - Redis 中的 key 如下图所示：
-  - ![Redis 中的 key](images/7/redis-key-data.png)
+  - ![Redis 中的 key](materials/7/redis-key-data.png)
 - Redis 中存储的对话记忆是（在这里不太方便用 cli 直接查看，因此获取之后打印出来）：
 ```
 {"@class":"com.study.chat.config.SerializableMessage","messageType":["com.study.chat.config.SerializableMessage$MessageType","SYSTEM"],"content":"你是一名Java架构师，擅长精准而简洁的回答问题","metadata":{"@class":"java.util.HashMap","messageType":["org.springframework.ai.chat.messages.MessageType","SYSTEM"]}}
@@ -381,7 +381,7 @@ public String deepSeek(String question, String conversationId) {
 
 redis 中的 key：
 
-![修复后的测试中Redis的key](images/7/after-repair-redis-key-data.png)
+![修复后的测试中Redis的key](materials/7/after-repair-redis-key-data.png)
 
 redis 中的 value
 

@@ -15,7 +15,7 @@
     |- v5: ......
 ```
 开发者的角度则是我们已经得到了一份提示词，我们需要怎样将这份提示词转换成代码去访问 AI 模型，才能得到我们想要的结果呢？
-![开发者 prompt 视角](images/3/dev-prompt.png)
+![开发者 prompt 视角](materials/3/dev-prompt.png)
 
 ---
 ### 2. 使用 Prompt
@@ -231,7 +231,7 @@ public String deepSeek(String question) {
 测试路由：http://localhost:8080/ai/chat/deepseek?question=参考苹果 iPhone16 系列的营销，写一份突出独特卖点、能吸引消费者购买的荣耀40系列产品推广方案
 
 测试结果：
-![img.png](images/3/prompt-assistant-result.png)
+![img.png](materials/3/prompt-assistant-result.png)
 
 以历史顾问的方式填充助手角色
 ```java

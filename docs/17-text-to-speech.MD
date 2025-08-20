@@ -19,7 +19,7 @@
 
 `Spring AI` 目前仅支持 `OpenAI`的`tts`模型（如： tts-1），未来计划通过抽象通用接口兼容更多服务商。
 
-![SpringAI支持TTS的大模型](images/17/spring-ai-tts-supported-models.png)
+![SpringAI支持TTS的大模型](materials/17/spring-ai-tts-supported-models.png)
 
 > PS:本次教程不会使用 OpenAI 的 TTS 模型做演示：
 > 1.网络访问限制
@@ -38,10 +38,12 @@
 [百炼平台](https://www.aliyun.com/product/bailian)是阿里云推出的“**一站式大模型开发及应用搭建**”平台，在平台上需完成如下设置：
 1. 注册（略）
 2. 开通模型服务
-![免费体验](images/17/free.png)
+![免费体验](materials/17/free.png)
+![领取免费体验额度](materials/17/get-free-quota.png)
+![领取免费体验额度第二步](materials/17/get-free-quota-2.png)
 3. 创建 API-Key
-![api-key manage](images/17/api-key-manage-page.png)
-![create-api-key](images/17/create-api-key.png)
+![api-key manage](materials/17/api-key-manage-page.png)
+![create-api-key](materials/17/create-api-key.png)
 
 ---
 
@@ -131,6 +133,6 @@ public class AudioGenerationController {
 http://localhost:8080/ai/qwen/tts?content=我是hartli，是一个天天搬砖的程序猿
 
 测试结果：
-![测试结果](images/17/first-result.png)
+![测试结果](materials/17/first-result.png)
 
 访问该地址会让你下载一个音频文件，下载到本地后访问即可。

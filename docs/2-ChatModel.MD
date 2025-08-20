@@ -36,7 +36,7 @@
 #### 2.1 工作原理
 
 完整的提示词示例：
-![ChatModel API](images/2/chat-model-pic.png)
+![ChatModel API](materials/2/chat-model-pic.png)
 
 ```
 [角色]你是一位经验丰富的家居改造顾问
@@ -118,10 +118,10 @@ public class ChatController {
 ```
 测试普通对话：
 http://localhost:8080/ai/chat/deepseek?question=1+1=%E7%AD%89%E4%BA%8E%E5%87%A0
-![普通对话结果](images/2/normal-chat-result.png)
+![普通对话结果](materials/2/normal-chat-result.png)
 测试流式对话：
 http://localhost:8080/ai/chat/stream/deepseek?question=1+1=%E7%AD%89%E4%BA%8E%E5%87%A0
-![流式对话结果](images/2/stream-chat-result.png)
+![流式对话结果](materials/2/stream-chat-result.png)
 
 由此发现一个问题：模型返回的流式结果是乱码的，需要处理一下。
 ```java
@@ -139,7 +139,7 @@ public class ChatController {
 }
 ```
 此时得到的结果就是正确的了。
-![流式正确结果](images/2/stream-chat-correct-result.png)
+![流式正确结果](materials/2/stream-chat-correct-result.png)
 
 ### 2.5 ChatClient 接口
 `ChatClient` 接口提供了`高层封装`（如 `Fluent API`流式API，提供链式调用），简化了开发，但是底层还是使用的 ChatModel。
