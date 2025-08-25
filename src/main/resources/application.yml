@@ -15,6 +15,12 @@ spring:
       port: 6379
 
   ai:
+    ollama:
+      base-url: http://127.0.0.1:11434
+      chat:
+          options:
+            model: glm4:9b
+            temperature: 0.7
     dashscope:
       api-key: sk-0f56eb281a0b4cf4bac813e7c452d3ca  # 百炼平台创建的 API-Key
     openai:

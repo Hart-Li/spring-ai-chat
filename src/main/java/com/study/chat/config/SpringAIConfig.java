@@ -6,6 +6,7 @@ import jakarta.annotation.Resource;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
+import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.ai.zhipuai.ZhiPuAiChatModel;
 import org.springframework.context.annotation.Bean;
@@ -23,6 +24,12 @@ public class SpringAIConfig {
     private DateTimeTools dateTimeTools;
     @Resource
     private WeatherTools weatherTools;
+
+    @Bean(name = "ollama")
+    public ChatClient chatClient(OllamaChatModel model){
+        return ChatClient.builder(model).build();
+    }
+
     // 创建基于 OpenAi 模型的客户端
     @Bean(name = "deepseek")
     public ChatClient deepSeekChatClient(OpenAiChatModel model) {
