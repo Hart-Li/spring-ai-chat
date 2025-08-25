@@ -47,7 +47,7 @@ public class RealTimeSpeechRecognitionTools {
                         ByteBuffer buffer = ByteBuffer.allocate(1024);
                         long start = System.currentTimeMillis();
                         // 录音30s并进行实时转写
-                        while (System.currentTimeMillis() - start < 10000) {
+                        while (System.currentTimeMillis() - start < 30000) {
                             int read = targetDataLine.read(buffer.array(), 0, buffer.capacity());
                             if (read > 0) {
                                 buffer.limit(read);
@@ -55,7 +55,7 @@ public class RealTimeSpeechRecognitionTools {
                                 emitter.onNext(buffer);
                                 buffer = ByteBuffer.allocate(1024);
                                 // 录音速率有限，防止cpu占用过高，休眠一小会儿
-                                Thread.sleep(20);
+                                Thread.sleep(2);
                             }
                         }
                         // 通知结束转写

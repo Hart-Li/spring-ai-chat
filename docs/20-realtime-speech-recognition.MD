@@ -78,10 +78,37 @@ public class RealTimeSpeechRecognitionTools {
     public void recognition() {
         // 创建语音数据源
         Flowable<ByteBuffer> source = Flowable.create(
-            flowableEmitter -> {
+            emitter -> {
                 // 定义一个异步线程来处理音频数据采集
                 new Thread(() -> {
-                    // ... 参考官方示例代码<略>
+                    try {
+                        // 创建音频格式
+                        AudioFormat audioFormat = new AudioFormat(16000, 16, 1, true, false);
+                        // 根据格式匹配默认录音设备
+                        TargetDataLine targetDataLine =
+                            AudioSystem.getTargetDataLine(audioFormat);
+                        targetDataLine.open(audioFormat);
+                        // 开始录音
+                        targetDataLine.start();
+                        ByteBuffer buffer = ByteBuffer.allocate(1024);
+                        long start = System.currentTimeMillis();
+                        // 录音30s并进行实时转写
+                        while (System.currentTimeMillis() - start < 30000) {
+                            int read = targetDataLine.read(buffer.array(), 0, buffer.capacity());
+                            if (read > 0) {
+                                buffer.limit(read);
+                                // 将录音音频数据发送给流式识别服务
+                                emitter.onNext(buffer);
+                                buffer = ByteBuffer.allocate(1024);
+                                // 录音速率有限，防止cpu占用过高，休眠一小会儿
+                                Thread.sleep(2);
+                            }
+                        }
+                        // 通知结束转写
+                        emitter.onComplete();
+                    } catch (Exception e) {
+                        emitter.onError(e);
+                    }
                 }).start();
             },
             // 设置背压策略为缓冲，当消费者处理不过来时缓冲数据
@@ -133,4 +160,5 @@ public class RealTimeSpeechRecognitionController {
 测试路由：<br/>
 http://localhost:8080/ai/realtime/speech
 
-
+测试结果：
+![result](materials/20/result.png)
