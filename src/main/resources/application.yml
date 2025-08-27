@@ -4,9 +4,9 @@ spring:
   # 数据库配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://111.231.63.169:3306/spring_ai_chat?autoReconnect=true&serverTimezone=UTC%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://127.0.0.1:3306/spring_ai_chat?autoReconnect=true&serverTimezone=UTC%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8
     username: root
-    password: jQ^kd9I28MfWM9p#
+    password: 123456
 
   # Redis 配置
   data:

@@ -6,10 +6,20 @@ Spring AI Chat 是一个专为**小白用户**设计的 Spring AI 学习项目�
 
 ### 🎯 学习目标
 - 掌握 Spring AI 基础概念和使用方法
-- 学会集成多种AI模型（DeepSeek、智谱AI、Ollama等）
+- 学会集成多种AI模型（DeepSeek、阿里QWen、智谱AI、Ollama等）
 - 理解AI工具调用和对话记忆机制
 - 实践多媒体AI应用开发
 - 从简单到复杂，循序渐进地学习AI应用开发
+
+## 🎓 学习成果
+
+通过本项目的学习，您将能够：
+- ✅ 独立搭建 Spring AI 开发环境
+- ✅ 掌握多种AI模型的集成方法
+- ✅ 实现AI工具调用和对话记忆功能
+- ✅ 开发多媒体AI应用（图像、音频、视频）
+- ✅ 理解AI应用的安全性和性能优化
+- ✅ 具备实际AI项目开发能力
 
 ## 📚 学习文档导航
 
@@ -282,27 +292,31 @@ spring-ai-chat/
    - 第3天: [提示词使用](docs/3-Prompt.MD) - 掌握提示词技巧
    - 第4天: [提示词模板](docs/4-PromptTemplate.MD) - 学习模板化处理
 
-2. **🔧 功能进阶** (5-10天)
+2. **🔧 功能进阶** (5-13天)
    - 第5天: [多轮对话记忆](docs/5-multi-chat-memory.MD) - 实现对话记忆
    - 第6天: [MySQL存储对话](docs/6-multi-chat-jdbc.MD) - 持久化存储
    - 第7天: [Redis存储对话](docs/7-multi-chat-redis.MD) - 缓存优化
-   - 第8天: [工具调用](docs/13-tool-call.MD) - 学习工具机制
-   - 第9天: [天气工具实战](docs/14-tool-get_real-weather.MD) - 实践工具开发
-   - 第10天: [多模型支持](docs/12-multi-model.MD) - 多模型集成
+   - 第8天: [顾问模式](docs/8-advisor.MD) - 学习顾问机制
+   - 第9天: [提示词记忆顾问](docs/9-PromptChatMemoryAdvisor.MD) - 智能对话管理
+   - 第10天: [安全顾问](docs/10-safe-advisor.MD) - 内容安全检测
+   - 第11天: [结构化输出](docs/11-structure-output.MD) - JSON数据输出
+   - 第12天: [多模型支持](docs/12-multi-model.MD) - 多模型集成
+   - 第13天: [工具调用](docs/13-tool-call.MD) - 学习工具机制
+   - 第14天: [天气工具实战](docs/14-tool-get_real-weather.MD) - 实践工具开发
 
-3. **🎨 多媒体AI** (11-18天)
-   - 第11天: [文本生成图像](docs/15-text-gen-image.MD) - 图像生成
-   - 第12天: [图像转文本](docs/16-image-to-text.MD) - 图像识别
-   - 第13天: [文本转语音](docs/17-text-to-speech.MD) - 语音合成
-   - 第14天: [语音识别](docs/18-asr.MD) - 语音转文本
-   - 第15天: [声音克隆](docs/19-audio-clone.MD) - AI声音克隆
-   - 第16天: [实时语音识别](docs/20-realtime-speech-recognition.MD) - 实时处理
-   - 第17天: [文本生成视频](docs/21-text-to-video.MD) - 视频生成
-   - 第18天: [图像转视频](docs/22-image-to-video.MD) - 视频转换
+3. **🎨 多媒体AI** (15-22天)
+   - 第15天: [文本生成图像](docs/15-text-gen-image.MD) - 图像生成
+   - 第16天: [图像转文本](docs/16-image-to-text.MD) - 图像识别
+   - 第17天: [文本转语音](docs/17-text-to-speech.MD) - 语音合成
+   - 第18天: [语音识别](docs/18-asr.MD) - 语音转文本
+   - 第19天: [声音克隆](docs/19-audio-clone.MD) - AI声音克隆
+   - 第20天: [实时语音识别](docs/20-realtime-speech-recognition.MD) - 实时处理
+   - 第21天: [文本生成视频](docs/21-text-to-video.MD) - 视频生成
+   - 第22天: [图像转视频](docs/22-image-to-video.MD) - 视频转换
 
-4. **🏠 高级应用** (19-20天)
-   - 第19天: [本地模型部署](docs/23-local-model.MD) - 离线AI应用
-   - 第20天: 项目实战 - 综合应用开发
+4. **🏠 高级应用** (23-24天)
+   - 第23天: [本地模型部署](docs/23-local-model.MD) - 离线AI应用
+   - 第24天: 项目实战 - 综合应用开发（目前正在出学习教程，出来之后第一时间更新~）
 
 ### 🛠 安装步骤
 
@@ -339,6 +353,8 @@ spring:
       base-url: https://api.deepseek.com
     zhipuai:
       api-key: your_zhipuai_api_key
+    dashscope:
+      api-key: your_dashscope_api_key
     ollama:
       base-url: http://127.0.0.1:11434
 
