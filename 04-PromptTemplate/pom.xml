@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>03-Prompt</artifactId>
+    <artifactId>04-PromptTemplate</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
