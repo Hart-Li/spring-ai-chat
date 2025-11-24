@@ -14,6 +14,8 @@
         <module>03-Prompt</module>
         <module>04-PromptTemplate</module>
         <module>05-MultiChatMemory</module>
+        <module>06-MultiChatJdbc</module>
+        <module>07-MultiChatRedis.MD</module>
     </modules>
 
 

@@ -11,6 +11,10 @@
     <file url="file://$PROJECT_DIR$/04-PromptTemplate/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/05-MultiChatMemory/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/05-MultiChatMemory/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/06-MultiChatJdbc/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/06-MultiChatJdbc/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/07-MultiChatRedis.MD/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/07-MultiChatRedis.MD/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>
