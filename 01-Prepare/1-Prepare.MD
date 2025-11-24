@@ -90,7 +90,7 @@ spring:
 ### 第一次与 AI 聊天
 
 ```java
-// 创建 controller 并进行访问
+// 创建 com.study.chat.controller 并进行访问
 @RestController
 public class ChatController {
 

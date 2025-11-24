@@ -11,6 +11,7 @@
     <modules>
         <module>01-Prepare</module>
         <module>02-ChatModel</module>
+        <module>03-Prompt</module>
     </modules>
 
 
