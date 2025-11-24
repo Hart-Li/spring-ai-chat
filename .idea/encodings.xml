@@ -19,6 +19,8 @@
     <file url="file://$PROJECT_DIR$/08-Advisor/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/09-PromptChatMemoryAdvisor/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/09-PromptChatMemoryAdvisor/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/10-SafeAdvisor/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/10-SafeAdvisor/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>
