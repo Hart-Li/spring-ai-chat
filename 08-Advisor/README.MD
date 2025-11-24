@@ -77,22 +77,23 @@ public final class MessageChatMemoryAdvisor implements BaseChatMemoryAdvisor {
 
 ```java
 @GetMapping("/ai/chat/deepseek/advisor")
-public String deepSeekChatAdvisor(String question, String conversationId) {
+public String deepSeek(@RequestParam(value = "question") String question,
+                       @RequestParam(value = "conversationId") String conversationId) {
     // 1. 生成会话ID（使用session id 确保用户隔离）
     // String conversationId = session.getId();
     if (StringUtils.isEmpty(question) || StringUtils.isEmpty(conversationId)) {
         return "error";
     }
     conversationId = "chat_memory:" + conversationId;
-    // 2. 创建 Advisor 对象 （单次）
+    // 2. 创建 Advisor 对象
     MessageChatMemoryAdvisor advisor = MessageChatMemoryAdvisor
-        .builder(chatMemory)   // 基于 chatMemory 构建顾问
-        .conversationId(conversationId)  // 配置会话ID
+        .builder(chatMemory) // 基于 chatMemory 构建顾问
+        .conversationId(conversationId)
         .build();
     // 3.请求模型并提取文本响应内容
     return chatClient.prompt()
         .user(question)
-        .advisors(advisor)      // 使用顾问管理对话记忆
+        .advisors(advisor)  // 使用顾问管理对话记忆
         .call()
         .content();
 }
@@ -133,8 +134,10 @@ public class SpringAIConfig {
     // 其他配置方法保持原样
 }
 
-@GetMapping("/ai/chat/deepseek/advisor")
-public String deepSeekChatAdvisor(String question, String conversationId) {
+@GetMapping("/ai/chat/deepseek/global_advisor")
+public String deepSeekGlobalAdvisor(@RequestParam(value = "question") String question,
+                                    @RequestParam(value = "conversationId")
+                                    String conversationId) {
     // 1. 生成会话ID（使用session id 确保用户隔离）
     // String conversationId = session.getId();
     if (StringUtils.isEmpty(question) || StringUtils.isEmpty(conversationId)) {
@@ -145,7 +148,7 @@ public String deepSeekChatAdvisor(String question, String conversationId) {
     String finalConversationId = conversationId;
     return chatClient.prompt()
         .user(question)
-        .advisors(advisor -> advisor.param(ChatMemory.CONVERSATION_ID, finalConversationId))      // 使用顾问管理对话记忆
+        .advisors(advisor -> advisor.param(ChatMemory.CONVERSATION_ID, finalConversationId))
         .call()
         .content();
 }

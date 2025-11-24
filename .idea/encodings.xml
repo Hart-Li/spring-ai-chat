@@ -15,8 +15,10 @@
     <file url="file://$PROJECT_DIR$/06-MultiChatJdbc/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/07-MultiChatRedis.MD/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/07-MultiChatRedis.MD/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/8-Advisor/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/8-Advisor/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/08-Advisor/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/08-Advisor/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/09-PromptChatMemoryAdvisor/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/09-PromptChatMemoryAdvisor/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>

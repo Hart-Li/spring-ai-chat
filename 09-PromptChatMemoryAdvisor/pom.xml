@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>8-Advisor</artifactId>
+    <artifactId>09-PromptChatMemoryAdvisor</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>

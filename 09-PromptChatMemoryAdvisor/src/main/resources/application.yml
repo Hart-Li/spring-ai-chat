@@ -18,9 +18,6 @@ spring:
           temperature: 0.7
           # 限制 Token 的用量
           # max-tokens: 500
-    chat:
-      memory:
-        repository:
-          jdbc:
-            initialize-schema: always
-            schema: classpath:/schema/mysql.sql
+logging:
+  level:
+    org.springframework: debug

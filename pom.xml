@@ -16,7 +16,8 @@
         <module>05-MultiChatMemory</module>
         <module>06-MultiChatJdbc</module>
         <module>07-MultiChatRedis.MD</module>
-        <module>8-Advisor</module>
+        <module>08-Advisor</module>
+        <module>09-PromptChatMemoryAdvisor</module>
     </modules>
 
 
