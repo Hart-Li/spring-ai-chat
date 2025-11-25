@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>10-SafeAdvisor</artifactId>
+    <artifactId>11-StructureOutput</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -39,6 +39,12 @@
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-starter-model-openai</artifactId>
             <version>1.0.1</version>
+        </dependency>
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.38</version>
         </dependency>
     </dependencies>
 

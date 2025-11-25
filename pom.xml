@@ -19,6 +19,7 @@
         <module>08-Advisor</module>
         <module>09-PromptChatMemoryAdvisor</module>
         <module>10-SafeAdvisor</module>
+        <module>11-StructureOutput</module>
     </modules>
 
 
