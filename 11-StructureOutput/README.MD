@@ -6,7 +6,7 @@
 
 AI 模型生成的响应通常为“**自由文本格式**”，这给“**下游应用程序**”的处理和集成带来了不便。如果直接将该文本传递给前端展示或者写入数据库，需要额外的解析逻辑，容易出错。
 
-![为什么需要结构化输出](materials/11/why-need-structure-output.png)
+![为什么需要结构化输出](materials/why-need-structure-output.png)
 
 ---
 
@@ -102,8 +102,8 @@ StructuredOutputConverter  // 接口
 
 ```java
 @GetMapping("/ai/chat/deepseek/structured/bean")
-public PhoneRecord deepSeekStructuredBean(String question) {
-    // 请求模型并提取文本响应内容
+public PhoneRecord deepSeek(@RequestParam(value = "question") String question) {
+    // 请求模型并转换为对应的实体
     return chatClient.prompt()
         .user(question)
         .call()
@@ -139,8 +139,9 @@ public record PhoneRecordList(List<PhoneRecord> phoneRecords) {
 
 ```java
 @GetMapping("/ai/chat/deepseek/structured/list")
-public PhoneRecordList deepSeekStructuredList(String question) {
-    // 请求模型并提取文本响应内容
+public PhoneRecordList deepSeekStructuredList(
+    @RequestParam(value = "question") String question) {
+    // 请求模型并转换为对应的实体
     return chatClient.prompt()
         .user(question)
         .call()
@@ -197,7 +198,8 @@ public record PhoneRecordMap(Map<String, PhoneRecord> phoneRecords) {
 
 ```java
 @GetMapping("/ai/chat/deepseek/structured/map")
-public PhoneRecordMap deepSeekStructuredMap(String question) {
+public PhoneRecordMap deepSeekStructuredMap(@RequestParam(value = "question") String question) {
+    // 请求模型并转换为对应的实体
     return chatClient.prompt()
         .user(question)
         .call()
