@@ -22,6 +22,7 @@
         <module>11-StructureOutput</module>
         <module>12-MultiModel</module><module>13-ToolCall</module>
         <module>14-ToolGetRealWeather</module>
+        <module>15-TextGenImage</module>
     </modules>
 
 
