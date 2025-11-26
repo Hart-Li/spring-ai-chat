@@ -23,6 +23,7 @@
         <module>12-MultiModel</module><module>13-ToolCall</module>
         <module>14-ToolGetRealWeather</module>
         <module>15-TextGenImage</module>
+        <module>16-ImageToText</module>
     </modules>
 
 
