@@ -60,7 +60,7 @@
     <groupId>com.alibaba</groupId>
     <artifactId>dashscope-sdk-java</artifactId>
     <!-- Qwen-TTS 模型要求 DashScope Java SDK 版本需要不小于 2.19.0 -->
-    <version>2.21.3</version>
+    <version>2.20.8</version>
 </dependency>
 ```
 
@@ -149,7 +149,7 @@ PS: 这里遇到一个坑， springboot 与 spring-ai 产生了冲突，因此�
 </dependency>
 ```
 
-2. 在 父 的 pom.xml 中指定 springboot 的统一版本
+2. 在 父(根目录下) 的 pom.xml 中指定 springboot 的统一版本
 
 ```
 <parent>

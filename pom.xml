@@ -32,6 +32,7 @@
         <module>15-TextGenImage</module>
         <module>16-ImageToText</module>
         <module>17-TextToSpeech</module>
+        <module>18-Asr</module>
     </modules>
 
 
