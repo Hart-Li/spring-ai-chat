@@ -14,7 +14,7 @@
 
 ![free-models.png](materials/free-models.png)
 
-PS: 本次视觉理解的前置知识点是 “Spring AI 集成智谱AI”，若不清楚的话可以参考 [12-multi-model](./12-multi-model.MD)。
+PS: 本次视觉理解的前置知识点是 “Spring AI 集成智谱AI”，若不清楚的话可以参考 [12-multi-model](../12-MultiModel/README.MD)。
 
 ---
 

@@ -37,6 +37,9 @@
     <file url="file://$PROJECT_DIR$/17-TextToSpeech/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/18-Asr/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/19-AudioClone/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/20-RealtimeSpeechRecognition/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/21-TextToVideo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/22-ImageToVideo/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>

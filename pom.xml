@@ -34,6 +34,9 @@
         <module>17-TextToSpeech</module>
         <module>18-Asr</module>
         <module>19-AudioClone</module>
+        <module>20-RealtimeSpeechRecognition</module>
+        <module>21-TextToVideo</module>
+        <module>22-ImageToVideo</module>
     </modules>
 
 

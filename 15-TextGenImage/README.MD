@@ -14,7 +14,7 @@
 
 ![文生图大模型](materials/text-to-image-model.png)
 
-PS: 本次文生图的前置知识点是 “Spring AI 整合智谱AI”，若不清楚的话可以参考 [12-multi-model](./12-multi-model.MD)。
+PS: 本次文生图的前置知识点是 “Spring AI 整合智谱AI”，若不清楚的话可以参考 [12-multi-model](../12-MultiModel/README.MD)。
 
 `ImageModel` 接口是文生图功能的核心接口，它定义如何向模型发送请求及返回响应。
 

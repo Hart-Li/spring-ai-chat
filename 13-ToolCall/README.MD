@@ -34,7 +34,7 @@
 2. 采取行动工具：可用于在软件系统中执行操作，例如发送电子邮件、在数据库中创建新纪录、提交表单或触发工作流，其目标是将原本需要人工干预或明确编程的任务实现自动化。
 ```
 
-注意：并非所有模型都能支持所有类别的工具调用，详细情况参考 [模型对比](https://docs.spring.io/spring-ai/reference/api/chat/comparison.html)，也可以根据[第 2 章](./2-ChatModel.MD)的不同供应商的支持能力来做对比。
+注意：并非所有模型都能支持所有类别的工具调用，详细情况参考 [模型对比](https://docs.spring.io/spring-ai/reference/api/chat/comparison.html)，也可以根据[第 2 章](../02-ChatModel/README.MD)的不同供应商的支持能力来做对比。
 
 实测：DeepSeek（OpenAI-proxy）支持信息检索工具，采取行动工具受限。信息检索工具调用需要依赖用户侧集成（用户提供自定义工具）。
 

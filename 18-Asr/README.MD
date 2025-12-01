@@ -31,7 +31,7 @@
 
 ### 4. 实现 ASR
 
-下面 4.1-4.2 步骤与 [17-text-to-speech.MD](./17-text-to-speech.MD) 中 5.1-5.2 步骤一致。
+下面 4.1-4.2 步骤与 [17-text-to-speech.MD](../17-TextToSpeech/README.MD) 中 5.1-5.2 步骤一致。
 
 #### 4.1 引入 DashScope 依赖
 

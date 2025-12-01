@@ -38,7 +38,7 @@
 
 ### 4. 实现语音克隆
 
-下面 4.1-4.2 步骤与 [17-text-to-speech.MD](./17-text-to-speech.MD) 中 5.1-5.2 步骤一致。
+下面 4.1-4.2 步骤与 [17-text-to-speech.MD](../17-TextToSpeech/README.MD) 中 5.1-5.2 步骤一致。
 
 #### 4.1 引入 DashScope 依赖
 `DashScope` 提供综合性 AI 解决方案，支持开发者通过 API 调用各类大模型。针对不同语言， `DashScope` 提供了不同软件开发工具包（SDK）。
