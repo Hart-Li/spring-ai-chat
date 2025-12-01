@@ -33,6 +33,7 @@
         <module>16-ImageToText</module>
         <module>17-TextToSpeech</module>
         <module>18-Asr</module>
+        <module>19-AudioClone</module>
     </modules>
 
 
