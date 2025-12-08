@@ -37,6 +37,7 @@
         <module>20-RealtimeSpeechRecognition</module>
         <module>21-TextToVideo</module>
         <module>22-ImageToVideo</module>
+        <module>23-LocalModel</module>
     </modules>
 
 
