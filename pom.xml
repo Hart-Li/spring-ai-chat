@@ -38,6 +38,7 @@
         <module>21-TextToVideo</module>
         <module>22-ImageToVideo</module>
         <module>23-LocalModel</module>
+        <module>24-RAG</module>
     </modules>
 
 
