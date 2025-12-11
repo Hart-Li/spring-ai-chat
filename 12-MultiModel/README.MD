@@ -52,7 +52,7 @@ spring:
 spring:
   ai:
     zhipuai:
-      api-key: 2814cb455d184be885effc25e34273da.vmGzALrOabZKJcm7
+      api-key: 2814cb45*****************************.****************KJcm7
       base-url: https://open.bigmodel.cn/api/paas/
       chat:
         options:

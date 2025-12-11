@@ -2,7 +2,7 @@ spring:
   ai:
     openai:
       # ds 提供的 API 密钥
-      api-key: sk-88b27d13dc9a4e98b602544eb23ffd21
+      api-key: sk-88b27***************************3ffd21
       #ds 开放平台地址
       base-url: https://api.deepseek.com
       chat:
@@ -14,7 +14,7 @@ spring:
           # 限制 Token 的用量
           # max-tokens: 500
     zhipuai:
-      api-key: 2814cb455d184be885effc25e34273da.vmGzALrOabZKJcm7
+      api-key: 2814cb45*****************************.****************KJcm7
       base-url: https://open.bigmodel.cn/api/paas/
       chat:
         options:

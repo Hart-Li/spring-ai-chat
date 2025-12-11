@@ -1,0 +1,20 @@
+spring:
+  ai:
+    ollama:
+      base-url: http://127.0.0.1:11434
+      embedding:
+        model: qwen3-embedding:0.6b
+    vectorstore:
+      chroma:   # 向量数据库 chroma
+        client: # 客户端配置
+          host: http://localhost  # 主机地址
+          port: 8000              # 端口号
+        initialize-schema: true   # 是否自动创建 Collection，默认为 false
+        collection-name: myCollection  # 自定义 Collection 的名字，默认为 SpringAiCollection
+
+
+
+
+logging:
+  level:
+    org.springframework: debug
